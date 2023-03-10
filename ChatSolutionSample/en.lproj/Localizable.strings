@@ -1,0 +1,34 @@
+/* 
+  Localizable.strings
+  ChatSolutionSample
+
+  Created by Parkjonghyun on 2023/03/10.
+  
+*/
+
+"enter_anonymous" = "Guest log in";
+"sign_up" = "Join";
+"enter_user" = "log in";
+"sample_description" = "Please click 'Guest log in' if you wish to log in as a guest. \nPlease contact app@coinlive.net \nif you need any support.";
+"duplicate_nickname" = "Nickname already exist";
+"already_sign_up_user" = "Account already signed up";
+"no_bandid" = "Band ID missing";
+"signup_success" = "Sign up completed";
+"select_channel" = "Select Channel";
+"choose_channel" = "Select Channel";
+"limit_insert_nickname" = "Max 10 characters";
+"limit_image_size" = "Max 15MB (jpeg, png)";
+"select" = "Select";
+"insert_uuid" = "UUID";
+"suspended_user" = "Suspended user";
+"dormant_user" = "Dormant user";
+"inactive_user" = "Inactive user";
+"no_user" = "User ID do not exist";
+"check_api_key" = "User information not found. Please check API_KEY";
+"insert_nickname" = "Nickname";
+"limit_insert_nickname_comment" = "Nickname must be less than 10 characters";
+"insert_image_comment" = "Select JPEG or PNG image";
+"disconnect" = "Sign out";
+"report_success" = "Report is received.\nThanks for your valuable opinion.";
+"load_fail" = "Fail load";
+"common_confirm" = "Confirm";

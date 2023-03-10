@@ -15,6 +15,14 @@
 		631272F329BB115900CC1B0F /* ChatSolutionSample.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 631272F129BB115900CC1B0F /* ChatSolutionSample.xcdatamodeld */; };
 		631272F529BB115A00CC1B0F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 631272F429BB115A00CC1B0F /* Assets.xcassets */; };
 		631272F829BB115A00CC1B0F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 631272F629BB115A00CC1B0F /* LaunchScreen.storyboard */; };
+		6312731B29BB143B00CC1B0F /* SampleChannelRowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6312731229BB143B00CC1B0F /* SampleChannelRowCell.swift */; };
+		6312731C29BB143B00CC1B0F /* Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6312731429BB143B00CC1B0F /* Custom.swift */; };
+		6312731D29BB143B00CC1B0F /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6312731529BB143B00CC1B0F /* Extension.swift */; };
+		6312731E29BB143B00CC1B0F /* SampleAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6312731729BB143B00CC1B0F /* SampleAlertViewController.swift */; };
+		6312731F29BB143B00CC1B0F /* StatusbarNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6312731829BB143B00CC1B0F /* StatusbarNavigationController.swift */; };
+		6312732029BB143B00CC1B0F /* SampleLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6312731929BB143B00CC1B0F /* SampleLoginViewController.swift */; };
+		6312732129BB143B00CC1B0F /* SampleSelectChannelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6312731A29BB143B00CC1B0F /* SampleSelectChannelViewController.swift */; };
+		6312732429BB147B00CC1B0F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6312732629BB147B00CC1B0F /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +35,15 @@
 		631272F429BB115A00CC1B0F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		631272F729BB115A00CC1B0F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		631272F929BB115A00CC1B0F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6312731229BB143B00CC1B0F /* SampleChannelRowCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleChannelRowCell.swift; sourceTree = "<group>"; };
+		6312731429BB143B00CC1B0F /* Custom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Custom.swift; sourceTree = "<group>"; };
+		6312731529BB143B00CC1B0F /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		6312731729BB143B00CC1B0F /* SampleAlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleAlertViewController.swift; sourceTree = "<group>"; };
+		6312731829BB143B00CC1B0F /* StatusbarNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusbarNavigationController.swift; sourceTree = "<group>"; };
+		6312731929BB143B00CC1B0F /* SampleLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleLoginViewController.swift; sourceTree = "<group>"; };
+		6312731A29BB143B00CC1B0F /* SampleSelectChannelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleSelectChannelViewController.swift; sourceTree = "<group>"; };
+		6312732529BB147B00CC1B0F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		6312732729BB148500CC1B0F /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8117C1A772DAE87ED01CC7C4 /* Pods-ChatSolutionSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatSolutionSample.release.xcconfig"; path = "Target Support Files/Pods-ChatSolutionSample/Pods-ChatSolutionSample.release.xcconfig"; sourceTree = "<group>"; };
 		882AFA4AAD8BCAE22DBFAD1D /* Pods-ChatSolutionSample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatSolutionSample.debug.xcconfig"; path = "Target Support Files/Pods-ChatSolutionSample/Pods-ChatSolutionSample.debug.xcconfig"; sourceTree = "<group>"; };
 		E410BD1A5328A96E9BF149D9 /* Pods_ChatSolutionSample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChatSolutionSample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -65,6 +82,8 @@
 		631272E729BB115900CC1B0F /* ChatSolutionSample */ = {
 			isa = PBXGroup;
 			children = (
+				6312732629BB147B00CC1B0F /* Localizable.strings */,
+				631272FF29BB13BB00CC1B0F /* Sources */,
 				631272E829BB115900CC1B0F /* AppDelegate.swift */,
 				631272EA29BB115900CC1B0F /* SceneDelegate.swift */,
 				631272EC29BB115900CC1B0F /* ViewController.swift */,
@@ -77,13 +96,50 @@
 			path = ChatSolutionSample;
 			sourceTree = "<group>";
 		};
+		631272FF29BB13BB00CC1B0F /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				6312731329BB143B00CC1B0F /* Util */,
+				6312731129BB143B00CC1B0F /* View */,
+				6312731629BB143B00CC1B0F /* ViewController */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		6312731129BB143B00CC1B0F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				6312731229BB143B00CC1B0F /* SampleChannelRowCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		6312731329BB143B00CC1B0F /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				6312731429BB143B00CC1B0F /* Custom.swift */,
+				6312731529BB143B00CC1B0F /* Extension.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		6312731629BB143B00CC1B0F /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				6312731729BB143B00CC1B0F /* SampleAlertViewController.swift */,
+				6312731829BB143B00CC1B0F /* StatusbarNavigationController.swift */,
+				6312731929BB143B00CC1B0F /* SampleLoginViewController.swift */,
+				6312731A29BB143B00CC1B0F /* SampleSelectChannelViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		A7612061BB12DD196CE6D81D /* Pods */ = {
 			isa = PBXGroup;
 			children = (
 				882AFA4AAD8BCAE22DBFAD1D /* Pods-ChatSolutionSample.debug.xcconfig */,
 				8117C1A772DAE87ED01CC7C4 /* Pods-ChatSolutionSample.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -139,6 +195,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ko,
 			);
 			mainGroup = 631272DC29BB115900CC1B0F;
 			productRefGroup = 631272E629BB115900CC1B0F /* Products */;
@@ -156,6 +213,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				631272F829BB115A00CC1B0F /* LaunchScreen.storyboard in Resources */,
+				6312732429BB147B00CC1B0F /* Localizable.strings in Resources */,
 				631272F529BB115A00CC1B0F /* Assets.xcassets in Resources */,
 				631272F029BB115900CC1B0F /* Main.storyboard in Resources */,
 			);
@@ -210,9 +268,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6312731F29BB143B00CC1B0F /* StatusbarNavigationController.swift in Sources */,
+				6312731B29BB143B00CC1B0F /* SampleChannelRowCell.swift in Sources */,
 				631272ED29BB115900CC1B0F /* ViewController.swift in Sources */,
+				6312731D29BB143B00CC1B0F /* Extension.swift in Sources */,
+				6312731E29BB143B00CC1B0F /* SampleAlertViewController.swift in Sources */,
+				6312731C29BB143B00CC1B0F /* Custom.swift in Sources */,
 				631272E929BB115900CC1B0F /* AppDelegate.swift in Sources */,
+				6312732129BB143B00CC1B0F /* SampleSelectChannelViewController.swift in Sources */,
 				631272F329BB115900CC1B0F /* ChatSolutionSample.xcdatamodeld in Sources */,
+				6312732029BB143B00CC1B0F /* SampleLoginViewController.swift in Sources */,
 				631272EB29BB115900CC1B0F /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -236,6 +301,15 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
+		6312732629BB147B00CC1B0F /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6312732529BB147B00CC1B0F /* en */,
+				6312732729BB148500CC1B0F /* ko */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -243,6 +317,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -303,6 +378,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
