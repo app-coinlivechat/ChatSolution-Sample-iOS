@@ -1,0 +1,11 @@
+framework module CoinliveChatSDK {
+  umbrella header "CoinliveChatSDK.h"
+
+  export *
+  module * { export * }
+}
+
+module CoinliveChatSDK.Swift {
+  header "CoinliveChatSDK-Swift.h"
+  requires objc
+}

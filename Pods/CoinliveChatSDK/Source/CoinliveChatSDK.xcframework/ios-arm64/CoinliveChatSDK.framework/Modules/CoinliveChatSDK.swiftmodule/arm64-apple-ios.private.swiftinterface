@@ -1,0 +1,458 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.7.1 (swiftlang-5.7.1.135.3 clang-1400.0.29.51)
+// swift-module-flags: -target arm64-apple-ios13.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name CoinliveChatSDK
+// swift-module-flags-ignorable: -enable-bare-slash-regex
+@_exported import CoinliveChatSDK
+import FirebaseAuth
+import FirebaseCore
+import FirebaseDatabase
+import FirebaseDynamicLinks
+import FirebaseFirestore
+import FirebaseFirestoreSwift
+import Foundation
+import Logging
+import Moya
+import SQLite3
+import Swift
+import _Concurrency
+import _StringProcessing
+public struct UserCount : Swift.Codable {
+  public var count: Swift.Int?
+  public var status: CoinliveChatSDK.USER_STATUS?
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct ReportType : Swift.Codable {
+  public var reportTypeId: Swift.String?
+  public var type: Swift.String?
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public enum CoinliveError : Swift.Error {
+  case NETWORK(code: Swift.String?, message: Swift.String?)
+  case REQUESTFAILED
+  case NONE(code: Swift.String, message: Swift.String)
+  case MODEL_DECODING
+  case SERVER_RESPONSE(code: Swift.String, message: Swift.String)
+  case UNKNOWN(code: Swift.String?, message: Swift.String)
+  case NO_AUTH_USER
+  case QUERY_FETCH_MESSAGE
+  case SUBSCRIBE_FETCH_MESSAGE(message: Swift.String?)
+  case SEND_MESSAGE(message: Swift.String?)
+  case FETCH_MESSAGE(message: Swift.String?)
+  case MESSAGE_ID_NIL
+  case CHAT_AMA
+  case SQLITE_OPEN_DATABASE(message: Swift.String?)
+  case SQLITE_PREPARE(message: Swift.String?)
+  case SQLITE_STEP(message: Swift.String?)
+  case SQLITE_BIND(message: Swift.String?)
+  case SQLITE_FILE_PATH
+  case SQLITE_NOTFOUND_COLUMN
+  case SQLITE_OBJECT_ENCODING
+  case SQLITE_OBJECT_DECODING
+}
+extension CoinliveChatSDK.CoinliveError {
+  public var code: Swift.String {
+    get
+  }
+  public var message: Swift.String {
+    get
+  }
+  public func errorLog() -> Swift.String
+}
+public struct Nickname : Swift.Codable {
+  public var word: Swift.String
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct ResponseProtocol {
+  public typealias onSuccess<T> = (T) -> Swift.Void
+  public typealias onFailed<T> = (T) -> Swift.Void where T : Swift.Error
+}
+public struct NotificationSetting : Swift.Codable {
+  public var notificationDictionary: Swift.Dictionary<Swift.String, Swift.Bool>
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+@_hasMissingDesignatedInitializers public class Feature {
+  public static var locale: Foundation.Locale
+  @objc deinit
+}
+public struct Upload : Swift.Codable {
+  public var url: Swift.String
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct Ama : Swift.Codable {
+  public var isPause: Swift.Bool
+  public var startTime: Swift.Int64
+  public var endTime: Swift.Int64?
+  public var heartCount: Swift.Int
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public enum AMA_STATUS {
+  case LIVE
+  case DONE
+  case BEFORE
+  case NONE
+  public static func == (a: CoinliveChatSDK.AMA_STATUS, b: CoinliveChatSDK.AMA_STATUS) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public struct Channel : Swift.Codable {
+  public var coinId: Swift.String
+  public var iconUrl: Swift.String?
+  public var name: Swift.String?
+  public var symbol: Swift.String?
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public enum USER_STATUS : Swift.String, Swift.Codable {
+  case ACTIVE
+  case BLOCK
+  case DORMANT
+  case INACTIVE
+  case NONE
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public class CoinliveRestApi {
+  public init()
+  @objc deinit
+}
+extension CoinliveChatSDK.CoinliveRestApi {
+  public func getCoin(coinId: Swift.String, onSuccess: @escaping CoinliveChatSDK.ResponseProtocol.onSuccess<CoinliveChatSDK.Coin>, onFailed: @escaping CoinliveChatSDK.ResponseProtocol.onFailed<CoinliveChatSDK.CoinliveError>)
+  public func getUserCount(coinId: Swift.String, onSuccess: @escaping CoinliveChatSDK.ResponseProtocol.onSuccess<CoinliveChatSDK.UserCount>, onFailed: @escaping CoinliveChatSDK.ResponseProtocol.onFailed<CoinliveChatSDK.CoinliveError>)
+  public func userJoin(coinId: Swift.String, onSuccess: @escaping CoinliveChatSDK.ResponseProtocol.onSuccess<Swift.Void>, onFailed: @escaping CoinliveChatSDK.ResponseProtocol.onFailed<CoinliveChatSDK.CoinliveError>)
+  public func userLeave(coinId: Swift.String, onSuccess: @escaping CoinliveChatSDK.ResponseProtocol.onSuccess<Swift.Void>, onFailed: @escaping CoinliveChatSDK.ResponseProtocol.onFailed<CoinliveChatSDK.CoinliveError>)
+  public func getChannelList(name: Swift.String, onSuccess: @escaping CoinliveChatSDK.ResponseProtocol.onSuccess<Swift.Array<CoinliveChatSDK.Channel>>, onFailed: @escaping CoinliveChatSDK.ResponseProtocol.onFailed<CoinliveChatSDK.CoinliveError>)
+  public func getCustomerInfo(name: Swift.String, onSuccess: @escaping CoinliveChatSDK.ResponseProtocol.onSuccess<CoinliveChatSDK.Customer>, onFailed: @escaping CoinliveChatSDK.ResponseProtocol.onFailed<CoinliveChatSDK.CoinliveError>)
+  public func getCustomerMemberInfo(onSuccess: @escaping CoinliveChatSDK.ResponseProtocol.onSuccess<CoinliveChatSDK.CustomerUser>, onFailed: @escaping CoinliveChatSDK.ResponseProtocol.onFailed<CoinliveChatSDK.CoinliveError>)
+  public func customerUserSignUp(customerId: Swift.String, profileImage: Swift.String?, nickname: Swift.String, onSuccess: @escaping CoinliveChatSDK.ResponseProtocol.onSuccess<Swift.Void>, onFailed: @escaping CoinliveChatSDK.ResponseProtocol.onFailed<CoinliveChatSDK.CoinliveError>)
+  public func getCustomToken(apiKey: Swift.String, uuid: Swift.String, customerName: Swift.String, onSuccess: @escaping CoinliveChatSDK.ResponseProtocol.onSuccess<CoinliveChatSDK.CustomerUserSignUp>, onFailed: @escaping CoinliveChatSDK.ResponseProtocol.onFailed<CoinliveChatSDK.CoinliveError>)
+  public func isAvailableNickname(nickname: Swift.String, customerId: Swift.String, onSuccess: @escaping CoinliveChatSDK.ResponseProtocol.onSuccess<Swift.Void>, onFailed: @escaping CoinliveChatSDK.ResponseProtocol.onFailed<CoinliveChatSDK.CoinliveError>)
+  public func setNickname(nickname: Swift.String, customerId: Swift.String, onSuccess: @escaping CoinliveChatSDK.ResponseProtocol.onSuccess<Swift.Void>, onFailed: @escaping CoinliveChatSDK.ResponseProtocol.onFailed<CoinliveChatSDK.CoinliveError>)
+  public func signUpCheck(firebaseUuid: Swift.String, onSuccess: @escaping CoinliveChatSDK.ResponseProtocol.onSuccess<CoinliveChatSDK.MemberSignUpCheck>, onFailed: @escaping CoinliveChatSDK.ResponseProtocol.onFailed<CoinliveChatSDK.CoinliveError>)
+  public func setBasicProfile(onSuccess: @escaping CoinliveChatSDK.ResponseProtocol.onSuccess<CoinliveChatSDK.Upload>, onFailed: @escaping CoinliveChatSDK.ResponseProtocol.onFailed<CoinliveChatSDK.CoinliveError>)
+  public func setNotification(coinId: Swift.String, notificationType: Swift.String, onSuccess: @escaping CoinliveChatSDK.ResponseProtocol.onSuccess<Swift.Void>, onFailed: @escaping CoinliveChatSDK.ResponseProtocol.onFailed<CoinliveChatSDK.CoinliveError>)
+  public func deleteNotification(coinId: Swift.String, notificationType: Swift.String, onSuccess: @escaping CoinliveChatSDK.ResponseProtocol.onSuccess<Swift.Void>, onFailed: @escaping CoinliveChatSDK.ResponseProtocol.onFailed<CoinliveChatSDK.CoinliveError>)
+  public func getNotificationType(coinId: Swift.String, onSuccess: @escaping CoinliveChatSDK.ResponseProtocol.onSuccess<Swift.Array<CoinliveChatSDK.NotificationType>>, onFailed: @escaping CoinliveChatSDK.ResponseProtocol.onFailed<CoinliveChatSDK.CoinliveError>)
+  public func uploadImage(image: Foundation.Data, onSuccess: @escaping CoinliveChatSDK.ResponseProtocol.onSuccess<CoinliveChatSDK.Upload>, onFailed: @escaping CoinliveChatSDK.ResponseProtocol.onFailed<CoinliveChatSDK.CoinliveError>)
+  public func deleteImage(url: Swift.String, onSuccess: @escaping CoinliveChatSDK.ResponseProtocol.onSuccess<Swift.Void>, onFailed: @escaping CoinliveChatSDK.ResponseProtocol.onFailed<CoinliveChatSDK.CoinliveError>)
+  public func uploadProfileImage(image: Foundation.Data, onSuccess: @escaping CoinliveChatSDK.ResponseProtocol.onSuccess<CoinliveChatSDK.Upload>, onFailed: @escaping CoinliveChatSDK.ResponseProtocol.onFailed<CoinliveChatSDK.CoinliveError>)
+  public func getReportTypes(onSuccess: @escaping CoinliveChatSDK.ResponseProtocol.onSuccess<Swift.Array<CoinliveChatSDK.ReportType>>, onFailed: @escaping CoinliveChatSDK.ResponseProtocol.onFailed<CoinliveChatSDK.CoinliveError>)
+  public func blockUser(blockMemberId: Swift.String, onSuccess: @escaping CoinliveChatSDK.ResponseProtocol.onSuccess<CoinliveChatSDK.BlockMember>, onFailed: @escaping CoinliveChatSDK.ResponseProtocol.onFailed<CoinliveChatSDK.CoinliveError>)
+  public func deleteBlockUser(blockMemberId: Swift.String, onSuccess: @escaping CoinliveChatSDK.ResponseProtocol.onSuccess<CoinliveChatSDK.BlockMember>, onFailed: @escaping CoinliveChatSDK.ResponseProtocol.onFailed<CoinliveChatSDK.CoinliveError>)
+  public func reportUser(reportMessage: Swift.String, reportMemberId: Swift.String, reportTypeId: Swift.String, onSuccess: @escaping CoinliveChatSDK.ResponseProtocol.onSuccess<Swift.Void>, onFailed: @escaping CoinliveChatSDK.ResponseProtocol.onFailed<CoinliveChatSDK.CoinliveError>)
+  public func getNotificationSetting(coinId: Swift.String, onSuccess: @escaping CoinliveChatSDK.ResponseProtocol.onSuccess<CoinliveChatSDK.NotificationSetting>, onFailed: @escaping CoinliveChatSDK.ResponseProtocol.onFailed<CoinliveChatSDK.CoinliveError>)
+}
+public struct NotificationTypeList : Swift.Codable {
+  public var notificationList: Swift.Array<CoinliveChatSDK.NotificationType>
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct Cm : Swift.Codable {
+  public var messageId: Swift.String
+  public var message: Swift.String?
+  public var insertTime: Swift.Int64
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public enum USER_APP_THEME : Swift.Codable {
+  case DARK
+  case LIGHT
+  case SYSTEM
+  public static func == (a: CoinliveChatSDK.USER_APP_THEME, b: CoinliveChatSDK.USER_APP_THEME) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public func encode(to encoder: Swift.Encoder) throws
+  public var hashValue: Swift.Int {
+    get
+  }
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct Asset : Swift.Codable {
+  public var exchange: Swift.String
+  public var amount: Swift.Double
+  public var priceWon: Swift.Double?
+  public var priceDol: Swift.Double
+  public var nickname: Swift.String
+  public var coinId: Swift.String
+  public var symbol: Swift.String
+  public var iconUrl: Swift.String
+  public var emoji: Swift.String
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public enum MESSAGE_TYPE : Swift.Codable {
+  case USER
+  case USER_RP
+  case USER_COUNT
+  case CM
+  case CM_RP
+  case ADMIN
+  case ADMIN_RP
+  case TWITTER
+  case BUY
+  case SELL
+  case JUMP
+  case DROP
+  case MEDIUM
+  case ASSET
+  public static func == (a: CoinliveChatSDK.MESSAGE_TYPE, b: CoinliveChatSDK.MESSAGE_TYPE) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public func encode(to encoder: Swift.Encoder) throws
+  public var hashValue: Swift.Int {
+    get
+  }
+  public init(from decoder: Swift.Decoder) throws
+}
+extension CoinliveChatSDK.MESSAGE_TYPE {
+  public var name: Swift.String {
+    get
+  }
+}
+public struct Customer : Swift.Codable {
+  public var appId: Swift.String
+  public var customerId: Swift.String
+  public var image: Swift.String
+  public var nickname: Swift.String
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+@_hasMissingDesignatedInitializers public class CoinliveAuthentication {
+  public static let shared: CoinliveChatSDK.CoinliveAuthentication
+  @objc deinit
+}
+extension CoinliveChatSDK.CoinliveAuthentication {
+  public func signInWithCustomToken(customerName: Swift.String, customToken: Swift.String, signInCallback: @escaping (_ firebaseId: Swift.String?, _ coinliveError: CoinliveChatSDK.CoinliveError?) -> Swift.Void)
+  public func signInWithUnknownUser(customerName: Swift.String, signInCallback: @escaping (_ firebaseId: Swift.String?, _ coinliveError: CoinliveChatSDK.CoinliveError?) -> Swift.Void)
+  public func isAnonymousUser() -> Swift.Bool
+  public func signOutFirebase() throws
+  public func getFirebaseToken(idTokenCallback: @escaping (_ token: Swift.String?, _ coinliveError: CoinliveChatSDK.CoinliveError?) -> Swift.Void)
+  public func getFirebaseUUID() throws -> Swift.String
+}
+public struct Emoji : Swift.Codable {
+  public var count: Swift.Int
+  public var mIds: Swift.Array<Swift.String>
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public enum EMOJI_TYPE : Swift.String, Swift.CodingKey {
+  case GOOD
+  case HEART
+  case CLAP
+  case ROCKET
+  case CRY
+  case ASTONISHED
+  public init?(rawValue: Swift.String)
+  public init?(stringValue: Swift.String)
+  public init?(intValue: Swift.Int)
+  public typealias RawValue = Swift.String
+  public var intValue: Swift.Int? {
+    get
+  }
+  public var rawValue: Swift.String {
+    get
+  }
+  public var stringValue: Swift.String {
+    get
+  }
+}
+extension Foundation.Date {
+  public var currentTimestampInt64: Swift.Int64 {
+    get
+  }
+  public func collectionTimestamp(gapOfDay: Swift.Int = 0) -> Swift.Int64
+  public func collectionFromTimestamp(timestamp: Swift.Int64) -> Swift.Int64
+  public func midnightTimestamp(gapOfDay: Swift.Int = 0) -> Swift.Int64
+  public func midnightFromTimestamp(timestamp: Swift.Int64) -> Swift.Int64
+}
+extension Swift.Int64 {
+  public func gapOfDayFromTimstamp() -> Swift.Int
+}
+public protocol MessageDelegate : AnyObject {
+  func deletedMessage(chat: CoinliveChatSDK.Chat?)
+  func modifyMessage(chat: CoinliveChatSDK.Chat)
+  func oldMessages(chatArray: Swift.Array<CoinliveChatSDK.Chat>, isReload: Swift.Bool)
+  func newMessages(chat: CoinliveChatSDK.Chat)
+  func failSendMessage(chat: CoinliveChatSDK.Chat)
+  func retrySendMessageSuccess(messageId: Swift.String?)
+}
+public protocol NoticeDelegate : AnyObject {
+  func cmNoticeListener(notice: Swift.String?)
+}
+public protocol AmaDelegate : AnyObject {
+  func amaNoticeListener(ama: CoinliveChatSDK.Ama)
+}
+public protocol TimeLimitDelegate : AnyObject {
+  func timeLimit(time: Swift.Int)
+}
+@_hasMissingDesignatedInitializers public class CoinliveChat {
+  public init(coinId: Swift.String, coinSymbol: Swift.String, customerName: Swift.String, messageDelegate: CoinliveChatSDK.MessageDelegate, noticeDelegate: CoinliveChatSDK.NoticeDelegate, amaDelegate: CoinliveChatSDK.AmaDelegate, timeLimitDelegate: CoinliveChatSDK.TimeLimitDelegate, chattingLocale: Swift.String = "KR")
+  @objc deinit
+}
+extension CoinliveChatSDK.CoinliveChat {
+  public func fetchMessage(standardSize: Swift.Int = 50, notificationMap: Swift.Dictionary<Swift.String, Swift.Bool>) throws
+  public func reloadMessages(notificationMap: Swift.Dictionary<Swift.String, Swift.Bool>)
+  public func sendMessage(message: Swift.String, myInfo: CoinliveChatSDK.CustomerUser) throws
+  public func sendImage(urlList: Swift.Array<Swift.String>, myInfo: CoinliveChatSDK.CustomerUser) throws
+  public func retrySendMessage(messageId: Swift.String) throws
+  public func deleteMessage(chat: CoinliveChatSDK.Chat)
+  public func deleteFailMessage(messageId: Swift.String)
+  public func addEmoji(chat: CoinliveChatSDK.Chat, memberId: Swift.String, emoji: CoinliveChatSDK.EMOJI_TYPE)
+  public func deleteEmoji(chat: CoinliveChatSDK.Chat, memberId: Swift.String, emoji: CoinliveChatSDK.EMOJI_TYPE)
+  public func getAmaStatus() -> CoinliveChatSDK.Ama?
+  public func getFailedMessages() -> Swift.Array<CoinliveChatSDK.Chat>?
+  public func close()
+  public func createDynamicLink(symbol: Swift.String, coinId: Swift.String, callback: @escaping (Foundation.URL?) -> ())
+}
+public struct CustomerUserSignUp : Swift.Codable {
+  public var firebaseUUID: Swift.String
+  public var customToken: Swift.String
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct CustomerUser : Swift.Codable {
+  public var benTime: Swift.String?
+  public var customerId: Swift.String
+  public var firebaseUUID: Swift.String
+  public var profileImage: Swift.String?
+  public var memberId: Swift.String
+  public var nickname: Swift.String?
+  public var status: CoinliveChatSDK.USER_STATUS
+  public var blockList: Swift.Array<Swift.String>
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct Chat : Swift.Codable {
+  public var messageId: Swift.String?
+  public var symbol: Swift.String
+  public var firebaseAuthId: Swift.String?
+  public var coinId: Swift.String
+  public var memberId: Swift.String?
+  public var userNickname: Swift.String?
+  public var profileUrl: Swift.String?
+  public var insertTime: Swift.Int64
+  public var serverTimestamp: FirebaseFirestore.Timestamp?
+  public var koMessage: Swift.String?
+  public var enMessage: Swift.String?
+  public var chattingLocale: Swift.String?
+  public var messageType: Swift.String
+  public var isNFTProfile: Swift.Bool?
+  public var exchange: Swift.String?
+  public var replyInsertTime: Swift.Int64?
+  public var replyMessageId: Swift.String?
+  public var replyUserNickname: Swift.String?
+  public var replyKoMessage: Swift.String?
+  public var replyEnMessage: Swift.String?
+  public var replyUserId: Swift.String?
+  public var label: Swift.String?
+  public var emoji: Swift.Dictionary<Swift.String, CoinliveChatSDK.Emoji>?
+  public var images: Swift.Array<Swift.String>?
+  public var isHolder: Swift.Bool?
+  public var asset: CoinliveChatSDK.Asset?
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct NotificationType : Swift.Codable {
+  public var name: Swift.String?
+  public var notificationId: Swift.String
+  public var target: Swift.String?
+  public var type: Swift.String?
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct ChannelList : Swift.Codable {
+  public var channelList: Swift.Array<CoinliveChatSDK.Channel>
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct MemberSignUpCheck : Swift.Codable {
+  public var benDate: Swift.Int?
+  public var benEndTime: Swift.String?
+  public var status: CoinliveChatSDK.USER_STATUS?
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct BlockMember : Swift.Codable {
+  public var memberIds: Swift.Array<Swift.String>
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public class Coinlive {
+  public init(isDebug: Swift.Bool, isShowHttpLog: Swift.Bool, locale: Foundation.Locale = .current, alreadyUseFirebaseApp: Swift.Bool = false)
+  @objc deinit
+}
+public enum ALARM_TYPE : Swift.Codable {
+  case CHAT_TWITTER
+  case CHAT_MEDIUM
+  case CHAT_LIQUIDATION
+  public static func == (a: CoinliveChatSDK.ALARM_TYPE, b: CoinliveChatSDK.ALARM_TYPE) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public func encode(to encoder: Swift.Encoder) throws
+  public var hashValue: Swift.Int {
+    get
+  }
+  public init(from decoder: Swift.Decoder) throws
+}
+public enum ResponseCode : Swift.String {
+  case SUCCESS
+  case FAIL
+  case REGISTERED_NICKNAME
+  case INVALID_NICKNAME
+  case INVALID_TOKEN
+  case INVALID_KEY
+  case INVALID_STATUS
+  case EXCEEDING_CERTIFICATIONS
+  case UNKNOWN_MEMBER
+  case DUPLICATED
+  case PARAMETER_ERROR
+  case TIMEOUT
+  case PERMISSION_DENIED
+  case NOT_SUPPORTED
+  case NOT_FOUND
+  case SERVER_ERROR
+  case ALREADY_REGISTERED
+  case UPLOAD_FAILED
+  case PROFILE_UPLOAD
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public struct Coin : Swift.Codable {
+  public var coinId: Swift.String
+  public var iconUrl: Swift.String?
+  public var coinName: Swift.String?
+  public var symbol: Swift.String
+  public var isAma: Swift.Bool?
+  public var amaTime: Foundation.Date?
+  public var userCount: Swift.Int
+  public var notificationDictionary: Swift.Dictionary<Swift.String, Swift.Bool>
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+extension CoinliveChatSDK.AMA_STATUS : Swift.Equatable {}
+extension CoinliveChatSDK.AMA_STATUS : Swift.Hashable {}
+extension CoinliveChatSDK.USER_STATUS : Swift.Equatable {}
+extension CoinliveChatSDK.USER_STATUS : Swift.Hashable {}
+extension CoinliveChatSDK.USER_STATUS : Swift.RawRepresentable {}
+extension CoinliveChatSDK.USER_APP_THEME : Swift.Equatable {}
+extension CoinliveChatSDK.USER_APP_THEME : Swift.Hashable {}
+extension CoinliveChatSDK.MESSAGE_TYPE : Swift.Equatable {}
+extension CoinliveChatSDK.MESSAGE_TYPE : Swift.Hashable {}
+extension CoinliveChatSDK.EMOJI_TYPE : Swift.Equatable {}
+extension CoinliveChatSDK.EMOJI_TYPE : Swift.Hashable {}
+extension CoinliveChatSDK.EMOJI_TYPE : Swift.RawRepresentable {}
+extension CoinliveChatSDK.ALARM_TYPE : Swift.Equatable {}
+extension CoinliveChatSDK.ALARM_TYPE : Swift.Hashable {}
+extension CoinliveChatSDK.ResponseCode : Swift.Equatable {}
+extension CoinliveChatSDK.ResponseCode : Swift.Hashable {}
+extension CoinliveChatSDK.ResponseCode : Swift.RawRepresentable {}
