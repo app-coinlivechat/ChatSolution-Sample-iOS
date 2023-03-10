@@ -181,9 +181,7 @@ Cocoa pod
     ```
     
 
-Sample 확인하기 >
-
-알려진 이슈 
+## 알려진 이슈 
 
 1. Runtime중 Coinlive sdk 관련 symbol 문제가 발생할 시 Podfile에 아래 코드를 추가해주세요. 
 
