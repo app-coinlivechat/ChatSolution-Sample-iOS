@@ -71,8 +71,8 @@ Cocoa pod
     
     ```swift
     CoinliveRestApi().getCustomerInfo(name: String, 
-    																	onSuccess: callback(customer),
-    																	onFailed: callback(error))
+    onSuccess: callback(customer), 
+    onFailed: callback(error))
     ```
     
 2. **사용자 인증** 
