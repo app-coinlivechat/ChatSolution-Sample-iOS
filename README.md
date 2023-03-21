@@ -115,7 +115,7 @@ Sample 확인하기 >
 - Dependencies
     - CoinliveChatSDK
 
-### 설치 (예정)
+### 설치
 
 Cocoa pod
 
@@ -166,7 +166,7 @@ Cocoa pod
                     })
     ```
     
-4. CoinliveChatUIKit의 CoinliveChatViewController()를 보여줍니다.
+4. CoinliveChatUIKit의 CoinliveChatViewController를 보여줍니다.
     
     ```swift
     // channel은 (1)에서 얻은 channel list에서 선택합니다.
