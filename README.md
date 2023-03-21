@@ -71,8 +71,8 @@ Cocoa pod
     
     ```swift
     CoinliveRestApi().getCustomerInfo(name: String, 
-    onSuccess: callback(customer), 
-    onFailed: callback(error))
+				      onSuccess: callback(customer), 
+				      onFailed: callback(error))
     ```
     
 2. **사용자 인증** 
@@ -80,12 +80,11 @@ Cocoa pod
     **익명 사용자**의 경우 CoinliveAuthentication를  통해 익명 sign-In을 진행합니다.
     
     ```swift
-    CoinliveAuthentication.shared.signInWithUnknownUser(signInCallback:
-    			 {(firebaseId, error) in
-                if let _ = error {
-                } else {
-    								/// 성공
-                }
+    CoinliveAuthentication.shared.signInWithUnknownUser(signInCallback: {(firebaseId, error) in
+				if let _ = error {
+				} else {
+					/// 성공
+				}
             })
     ```
     
@@ -140,8 +139,8 @@ Cocoa pod
     
     ```swift
     CoinliveRestApi().getChannelList(name: String,
-    															 onSuccess: callback(channelList), 
-    															 onFailed: callback(error))
+    				     onSuccess: callback(channelList), 
+				     onFailed: callback(error))
     ```
     
 2. Coinlive Auth를 통해 Signing User인지 확인합니다.
@@ -159,11 +158,8 @@ Cocoa pod
     
     ```swift
     // 회원 사용자 
-    CoinliveRestApi().getCustomerMemberInfo(
-                    onSuccess: { customerUser in
-                    },
-                    onFailed: { error in
-                    })
+    CoinliveRestApi().getCustomerMemberInfo(onSuccess: { customerUser in },
+			                    onFailed: { error in })
     ```
     
 4. CoinliveChatUIKit의 CoinliveChatViewController를 보여줍니다.
